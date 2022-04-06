@@ -2,6 +2,7 @@
 
 namespace MakiniAdapter\MongoConverter;
 
+use Illuminate\Support\Str;
 use MakiniAdapter\MongoConverter\Converts\Boolean;
 use MakiniAdapter\MongoConverter\Converts\Date;
 use MakiniAdapter\MongoConverter\Converts\Double;
@@ -120,5 +121,22 @@ class MongoUtils
         $convertor = new Convertor($expression, $mongoType);
 
         return $convertor->toArray();
+    }
+
+    public static function addKeyFiled(
+        string $fnc,
+        string $key = 'key',
+        string $expression = '$_id'
+    ): array {
+        preg_match('/get(.+)Output/', $fnc, $matches);
+        $name = Str::upper($matches[1]);
+
+        return [
+            '$addFields' => [
+                $key => [
+                    '$concat' => ["%%COLLECTION_{$name}%%", $expression],
+                ],
+            ]
+        ];
     }
 }
