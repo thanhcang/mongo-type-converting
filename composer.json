@@ -1,0 +1,32 @@
+{
+    "name": "cangvo/mongo-type-converting",
+    "version": "1.0",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+    },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "CangVo\\MongoConverter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8889 server.php"
+    }
+}

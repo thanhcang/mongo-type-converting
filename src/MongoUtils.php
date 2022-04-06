@@ -1,0 +1,124 @@
+<?php
+
+namespace CangVo\MongoConverter;
+
+use CangVo\MongoConverter\Converts\Boolean;
+use CangVo\MongoConverter\Converts\Date;
+use CangVo\MongoConverter\Converts\Double;
+use CangVo\MongoConverter\Converts\Integer;
+use CangVo\MongoConverter\Converts\MString;
+
+class MongoUtils
+{
+    public static function lookup(string $from, string $localField, string $foreignField, string $as): array
+    {
+        return [
+            '$lookup' => [
+                'from' => $from,
+                'localField' => $localField,
+                'foreignField' => $foreignField,
+                'as' => $as
+            ]
+        ];
+    }
+
+    public static function addFields($fields): array
+    {
+        return ['$addFields' => $fields];
+    }
+
+    public static function project($fields): array
+    {
+        return ['$project' => $fields];
+    }
+
+    public static function arrayElemAt($expr, $index): array
+    {
+        return ['$arrayElemAt' => [$expr, $index]];
+    }
+
+    public static function arrayFirst($expr): array
+    {
+        return static::arrayElemAt($expr, 0);
+    }
+
+    public static function toString(string $expression): array
+    {
+        return self::typeOf(MString::class, $expression);
+    }
+
+    public static function toDate(string $expression): array
+    {
+        return self::typeOf(Date::class, $expression);
+    }
+
+    public static function toInt(string $expression, int $default = 0): array
+    {
+        return self::typeOf(Integer::class, $expression, $default);
+    }
+
+    public static function toDouble(string $expression, float $default = 0.0): array
+    {
+        return self::typeOf(Double::class, $expression, $default);
+    }
+
+    public static function toBool(string $expression, bool $default = false): array
+    {
+        return self::typeOf(Boolean::class, $expression, $default);
+    }
+
+    public static function concat(...$args): array
+    {
+        if (count($args) === 0) {
+            trigger_error('Invalid argument count');
+        }
+        if (is_array($args[0])) {
+            $args = $args[0];
+        }
+        return ['$concat' => $args];
+    }
+
+    public static function unset(...$args): array
+    {
+        if (count($args) === 0) {
+            trigger_error('Invalid argument count');
+        }
+        if (is_array($args[0])) {
+            $args = $args[0];
+        }
+        return ['$unset' => $args];
+    }
+
+    public static function ifNull($expr, $then): array
+    {
+        return ['$ifNull' => [$expr, $then]];
+    }
+
+    public static function createView(string $viewName, string $viewOn, array $pipeline): array
+    {
+        return [
+            'create' => $viewName,
+            'viewOn' => $viewOn,
+            'pipeline' => $pipeline,
+        ];
+    }
+
+
+    public static function unwind($path, $preserveNullAndEmptyArrays = false): array
+    {
+        return ['$unwind' => compact($path, $preserveNullAndEmptyArrays)];
+    }
+
+    public static function unionWith(string $coll, array $pipeline): array
+    {
+        return ['$unionWith' => compact($coll, $pipeline)];
+    }
+
+    public static function typeOf(mixed $convertType, string $expression, mixed $default = null): array
+    {
+        $mongoType = new $convertType($default);
+        $convertor = new Convertor($expression, $mongoType);
+
+        return $convertor->toArray();
+    }
+}
