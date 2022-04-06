@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "CangVo\\MongoConverter\\": "src/"
+            "MakiniAdapter\\MongoConverter\\": "src/"
         }
     },
     "autoload-dev": {
