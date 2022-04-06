@@ -1,9 +1,9 @@
 <?php
 
 
-namespace CangVo\MongoConverter\Converts;
+namespace MakiniAdapter\MongoConverter\Converts;
 
-use CangVo\MongoConverter\MongoType;
+use MakiniAdapter\MongoConverter\MongoType;
 class Integer extends Convert implements MongoType
 {
     public function type(): string

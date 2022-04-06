@@ -1,8 +1,8 @@
 <?php
 
 
-namespace CangVo\MongoConverter\Converts;
-use CangVo\MongoConverter\MongoType;
+namespace MakiniAdapter\MongoConverter\Converts;
+use MakiniAdapter\MongoConverter\MongoType;
 
 class MString extends Convert implements MongoType
 {

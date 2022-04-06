@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CangVo\MongoConverter;
+namespace MakiniAdapter\MongoConverter;
 
 interface MongoType
 {

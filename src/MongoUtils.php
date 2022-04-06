@@ -1,12 +1,12 @@
 <?php
 
-namespace CangVo\MongoConverter;
+namespace MakiniAdapter\MongoConverter;
 
-use CangVo\MongoConverter\Converts\Boolean;
-use CangVo\MongoConverter\Converts\Date;
-use CangVo\MongoConverter\Converts\Double;
-use CangVo\MongoConverter\Converts\Integer;
-use CangVo\MongoConverter\Converts\MString;
+use MakiniAdapter\MongoConverter\Converts\Boolean;
+use MakiniAdapter\MongoConverter\Converts\Date;
+use MakiniAdapter\MongoConverter\Converts\Double;
+use MakiniAdapter\MongoConverter\Converts\Integer;
+use MakiniAdapter\MongoConverter\Converts\MString;
 
 class MongoUtils
 {

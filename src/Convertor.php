@@ -1,6 +1,6 @@
 <?php
 
-namespace CangVo\MongoConverter;
+namespace MakiniAdapter\MongoConverter;
 
 class Convertor
 {
