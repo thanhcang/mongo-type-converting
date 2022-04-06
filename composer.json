@@ -4,6 +4,10 @@
     "type": "project",
     "license": "proprietary",
     "authors": [
+        {
+            "name": "Cangvo",
+            "email": "cangvo@makini.io"
+        }
     ],
     "require": {
         "php": "^8.0"
@@ -25,8 +29,5 @@
     "autoload-dev": {
         "psr-4": {
         }
-    },
-    "scripts": {
-        "start": "php -S localhost:8889 server.php"
     }
 }
