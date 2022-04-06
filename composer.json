@@ -1,6 +1,6 @@
 {
     "name": "cangvo/mongo-type-converting",
-    "type": "project",
+    "type": "library",
     "license": "proprietary",
     "authors": [
         {
