@@ -1,7 +1,7 @@
 {
     "name": "cangvo/mongo-type-converting",
     "type": "library",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Cangvo",
