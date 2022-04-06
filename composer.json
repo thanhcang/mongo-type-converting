@@ -29,5 +29,6 @@
     "autoload-dev": {
         "psr-4": {
         }
-    }
+    },
+    "minimum-stability": "1.0"
 }
