@@ -8,6 +8,7 @@ class Schema extends Fluent
 {
     const KEY = 'key';
     const SITE_KEY = 'siteKey';
+    const SITE_KEYS = 'siteKeys';
     const ASSET_KEY = 'assetKey';
     const ASSET_KEYS = 'assetKeys';
     const VENDOR_KEY = 'vendorKey';
