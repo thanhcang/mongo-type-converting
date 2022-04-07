@@ -16,6 +16,7 @@ class Schema extends Fluent
     const TEAM_KEY = 'teamKey';
     const DOCUMENT_KEYS = 'documentKeys';
     const PARENT_KEY = 'parentKey';
+    const PARENT_KEYS = 'parentKeys';
 
     const NAME = 'name';
     const DESCRIPTION = 'description';
