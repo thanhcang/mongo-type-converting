@@ -36,4 +36,5 @@ class Schema extends Fluent
 
     const UPDATED_AT = 'updatedAt';
     const CREATED_AT = 'createdAt';
+    const DELETED_AT = 'deletedAt';
 }
