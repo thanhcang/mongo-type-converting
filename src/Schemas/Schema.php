@@ -26,7 +26,7 @@ class Schema extends Fluent
     const CATEGORY = 'categoryName';
     const MANUFACTURE_NAME = 'manufacturerName';
     const MODEL_NAME = 'modelName';
-    const SERIAL_KEY = 'serialKey';
+    const SERIAL_KEY = 'serialNumber';
     const CRITICALITY = 'criticality';
     const ADDRESS = 'address';
     const CODE = 'code';
@@ -37,6 +37,7 @@ class Schema extends Fluent
     const UPDATED_AT = 'updatedAt';
     const CREATED_AT = 'createdAt';
     const DELETED_AT = 'deletedAt';
+    const ACTIVATED_AT = 'activatedAt';
 
     const STARTED_AT = 'startedAt';
     const ENDED_AT = 'endedAt';
