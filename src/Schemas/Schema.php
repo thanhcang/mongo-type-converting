@@ -23,7 +23,7 @@ class Schema extends Fluent
     const DESCRIPTION = 'description';
     const NOTES = 'notes';
     const ACTIVE = 'isActive';
-    const CATEGORY = 'category';
+    const CATEGORY = 'categoryName';
     const MANUFACTURE_NAME = 'manufacturerName';
     const MODEL_NAME = 'modelName';
     const SERIAL_KEY = 'serialKey';
