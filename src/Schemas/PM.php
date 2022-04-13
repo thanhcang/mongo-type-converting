@@ -5,6 +5,9 @@ namespace MakiniAdapter\MongoConverter\Schemas;
 
 class PM extends Schema
 {
+    const WORK_REQUEST_KEY = 'workRequestKey';
+    const PM_KEY = 'pmKey';
+
     const SEVERITY = 'severity';
     const  PARTS = 'parts';
     const  INSTRUCTIONS = 'instructions';
@@ -19,4 +22,5 @@ class PM extends Schema
     const ESTIMATE_TIME = 'estimatedTime';
     const DOCUMENT_KEY = 'documentKey';
     const DOCUMENT_PAGE = 'documentPage';
+
 }

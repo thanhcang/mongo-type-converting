@@ -50,4 +50,8 @@ class Schema extends Fluent
     const LAST_COMPLETED_AT = 'lastCompletedAt';
     const LAST_COMPLETE_REMARKS = 'lastCompletionRemarks';
 
+    const USER_ASSIGNED_KEY = 'userAssignedKey';
+    const USER_COMPLETE_KEY = 'userCompletedKey';
+
+
 }
