@@ -20,6 +20,7 @@ class Schema extends Fluent
     const PARENT_KEYS = 'parentKeys';
 
     const NAME = 'name';
+    const TITLE = 'title';
     const DESCRIPTION = 'description';
     const NOTES = 'notes';
     const ACTIVE = 'isActive';

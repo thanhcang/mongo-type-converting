@@ -7,6 +7,7 @@ class PM extends Schema
 {
     const SEVERITY = 'severity';
     const  PARTS = 'parts';
+    const  INSTRUCTIONS = 'instructions';
 
     const TRIGGER = 'triggers';
     const TRIGGER_UNIT = 'unit';
