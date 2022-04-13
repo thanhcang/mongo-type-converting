@@ -16,7 +16,6 @@ class Part extends Schema
     const INVENTORY_QUANTITY = 'quantity';
     const INVENTORY_UPDATE_AT = 'updatedAt';
     const MINIMUM_QUANTITY = 'minimumQuantity';
-    const UOM = 'uom';
     const IS_ASSEMBLY = 'isAssembly';
     const DRAWINGS = 'drawings';
     const DRAWINGS_DRAWING_NO = 'drawingNo';

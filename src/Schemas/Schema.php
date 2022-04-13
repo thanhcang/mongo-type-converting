@@ -32,7 +32,7 @@ class Schema extends Fluent
     const CODE = 'code';
     const TEXT = 'text';
     const STATUS = 'status';
-
+    const UOM = 'uom';
 
     const UPDATED_AT = 'updatedAt';
     const CREATED_AT = 'createdAt';
