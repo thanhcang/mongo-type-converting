@@ -8,7 +8,6 @@ class PM extends Schema
     const WORK_REQUEST_KEY = 'workRequestKey';
     const PM_KEY = 'pmKey';
 
-    const SEVERITY = 'severity';
     const  PARTS = 'parts';
     const  INSTRUCTIONS = 'instructions';
 
