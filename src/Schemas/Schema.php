@@ -35,6 +35,7 @@ class Schema extends Fluent
     const STATUS = 'status';
     const UOM = 'uom';
     const SEVERITY = 'severity';
+    const TYPE = 'type';
 
     const UPDATED_AT = 'updatedAt';
     const CREATED_AT = 'createdAt';
