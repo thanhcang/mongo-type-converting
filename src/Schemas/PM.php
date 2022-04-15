@@ -12,7 +12,7 @@ class PM extends Schema
     const  INSTRUCTIONS = 'instructions';
 
     const TRIGGER = 'triggers';
-    const TRIGGER_UOM = 'unit';
+    const TRIGGER_UOM = 'uom';
     const TRIGGER_TYPE = 'type';
     const TRIGGER_INTERVAL = 'interval';
     const TRIGGER_RECURRING = 'recurring';
