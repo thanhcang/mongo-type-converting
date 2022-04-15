@@ -22,4 +22,6 @@ class PM extends Schema
     const DOCUMENT_KEY = 'documentKey';
     const DOCUMENT_PAGE = 'documentPage';
 
+    const DUE_AT = 'dueAt';
+
 }
