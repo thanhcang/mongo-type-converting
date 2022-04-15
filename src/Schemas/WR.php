@@ -3,7 +3,7 @@
 
 namespace MakiniAdapter\MongoConverter\Schemas;
 
-class WR extends PM
+class WR extends WO
 {
     const USER_REQUESTED_KEY = 'userRequestedKey';
     const USER_APPROVED_KEY = 'userApprovedKey';
