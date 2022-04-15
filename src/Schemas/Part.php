@@ -25,5 +25,5 @@ class Part extends Schema
     const DRAWINGS_DOCUMENT_KEY = 'documentKey';
     const DRAWINGS_DOCUMENT_PAGE = 'documentPage';
 
-    const PART_KEY = 'part_key';
+    const PART_KEY = 'partKey';
 }
