@@ -123,7 +123,7 @@ class MongoUtils
         return $convertor->toArray();
     }
 
-    public static function addKeyFiled(
+    public static function toKey(
         string $fnc,
         string $key = 'key',
         string $expression = '$_id'
