@@ -12,6 +12,7 @@ class Schema extends Fluent
     const ASSET_KEY = 'assetKey';
     const ASSET_KEYS = 'assetKeys';
     const VENDOR_KEY = 'vendorKey';
+    const PART_KEY = 'partKey';
 
     const MODEL_KEY = 'modelKey';
     const TEAM_KEY = 'teamKey';
@@ -36,6 +37,8 @@ class Schema extends Fluent
     const UOM = 'uom';
     const SEVERITY = 'severity';
     const TYPE = 'type';
+    CONST WAREHOUSE_NAME = 'warehouseName';
+    CONST CURRENCY = 'currency';
 
     const UPDATED_AT = 'updatedAt';
     const CREATED_AT = 'createdAt';
