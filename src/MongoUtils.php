@@ -5,6 +5,7 @@ namespace MakiniAdapter\MongoConverter;
 use Illuminate\Support\Str;
 use MakiniAdapter\MongoConverter\Converts\Boolean;
 use MakiniAdapter\MongoConverter\Converts\Date;
+use MakiniAdapter\MongoConverter\Converts\Decimal;
 use MakiniAdapter\MongoConverter\Converts\Double;
 use MakiniAdapter\MongoConverter\Converts\Integer;
 use MakiniAdapter\MongoConverter\Converts\MString;
@@ -63,6 +64,11 @@ class MongoUtils
         return self::typeOf(Double::class, $expression, $default);
     }
 
+    public static function toDecimal(string $expression, float $default = 0.0): array
+    {
+        return self::typeOf(Decimal::class, $expression, $default);
+    }
+
     public static function toBool(string $expression, bool $default = false): array
     {
         return self::typeOf(Boolean::class, $expression, $default);
@@ -104,7 +110,6 @@ class MongoUtils
         ];
     }
 
-
     public static function unwind($path, $preserveNullAndEmptyArrays = false): array
     {
         return ['$unwind' => compact($path, $preserveNullAndEmptyArrays)];
@@ -113,6 +118,15 @@ class MongoUtils
     public static function unionWith(string $coll, array $pipeline): array
     {
         return ['$unionWith' => compact($coll, $pipeline)];
+    }
+
+    /**
+     * eg : parse to int
+     * m::toValue('$toInt', m::decimal('$field'))
+     */
+    public static function toValue(string $type, mixed $value) : array
+    {
+        return [$type => $value];
     }
 
     public static function typeOf(mixed $convertType, string $expression, mixed $default = null): array
