@@ -13,7 +13,7 @@ use MakiniAdapter\MongoConverter\Converts\MString;
 class MongoUtils
 {
     use Calculation;
-    
+
     public static function lookup(string $from, string $localField, string $foreignField, string $as): array
     {
         return [

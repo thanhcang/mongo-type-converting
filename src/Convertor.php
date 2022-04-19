@@ -20,10 +20,10 @@ class Convertor
     {
         return [
             '$ifNull' => [
-                $this->mongo->getDefault(),
                 [
                     $this->mongo->type() => $this->key
-                ]
+                ],
+                $this->mongo->getDefault()
             ]
         ];
     }

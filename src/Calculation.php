@@ -14,4 +14,6 @@ trait Calculation
     ): array {
         return ['$multiply' => $expression];
     }
+
+
 }
