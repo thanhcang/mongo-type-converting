@@ -44,6 +44,8 @@ class Schema extends Fluent
     const CREATED_AT = 'createdAt';
     const DELETED_AT = 'deletedAt';
     const ACTIVATED_AT = 'activatedAt';
+    const COMPLETED_AT = 'completedAt';
+    const DUE_AT = 'dueAt';
 
     const STARTED_AT = 'startedAt';
     const ENDED_AT = 'endedAt';
