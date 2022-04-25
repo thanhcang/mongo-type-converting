@@ -169,8 +169,7 @@ class MongoUtils
         }
 
         $key = $mapping[$name];
-
-
+        
         return [
             '$addFields' => [
                 $key => [
