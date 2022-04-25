@@ -164,14 +164,17 @@ class MongoUtils
             'TEAMS' => '14',
         ];
 
-        if (!in_array($name, $mapping)) {
+        if (!in_array($name, array_keys($mapping))) {
             throw new \Exception('Do no support' . $name);
         }
+
+        $key = $mapping[$name];
+
 
         return [
             '$addFields' => [
                 $key => [
-                    '$concat' => [$name, $expression],
+                    '$concat' => [$key, $expression],
                 ],
             ]
         ];
