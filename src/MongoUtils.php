@@ -173,7 +173,7 @@ class MongoUtils
         return [
             '$addFields' => [
                 $key => [
-                    '$concat' => [$key, $expression],
+                    '$concat' => ["%%COLLECTION_{$key}%%", $expression],
                 ],
             ]
         ];
