@@ -168,12 +168,12 @@ class MongoUtils
             throw new \Exception('Do no support' . $name);
         }
 
-        $key = $mapping[$name];
+        $coll = $mapping[$name];
 
         return [
             '$addFields' => [
                 $key => [
-                    '$concat' => ["%%COLLECTION_{$key}%%", $expression],
+                    '$concat' => [$coll, $expression],
                 ],
             ]
         ];
