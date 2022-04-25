@@ -147,6 +147,18 @@ class MongoUtils
         preg_match('/get(.+)Output/', $fnc, $matches);
         $name = Str::upper($matches[1]);
 
+        if ($name === 'WORKORDERS') {
+            $name =  'WORK_ORDERS';
+        }
+
+        if ($name === 'PURCHASEORDERS') {
+            $name =  'PURCHASE_ORDERS';
+        }
+
+        if ($name === 'PreventiveMaintenance') {
+            $name =  'PM';
+        }
+
         return [
             '$addFields' => [
                 $key => [
