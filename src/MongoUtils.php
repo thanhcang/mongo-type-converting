@@ -155,7 +155,7 @@ class MongoUtils
             $name =  'PURCHASE_ORDERS';
         }
 
-        if ($name === 'PreventiveMaintenance') {
+        if ($name === 'PREVENTIVEMAINTENANCE') {
             $name =  'PM';
         }
 
