@@ -147,22 +147,31 @@ class MongoUtils
         preg_match('/get(.+)Output/', $fnc, $matches);
         $name = Str::upper($matches[1]);
 
-        if ($name === 'WORKORDERS') {
-            $name =  'WORK_ORDERS';
-        }
+        $mapping = [
+            'SITES' => '01',
+            'ASSETS' => '02' ,
+            'WORKORDERS' => '03',
+            'PARTS' => '04',
+            'PURCHASE_ORDERS' => '05' ,
+            'PREVENTIVEMAINTENANCE' => '06',
+            'MODELS' => '07',
+            'COUNTERS' => '08',
+            'VENDORS' => '09',
+            'ASSETSDOWNTIME' => '10',
+            'WORKREQUESTS' => '11',
+            'COUNTERSREADINGS' => '12' ,
+            'DOCUMENTS' =>  '13',
+            'TEAMS' => '14',
+        ];
 
-        if ($name === 'PURCHASEORDERS') {
-            $name =  'PURCHASE_ORDERS';
-        }
-
-        if ($name === 'PREVENTIVEMAINTENANCE') {
-            $name =  'PM';
+        if (!in_array($name, $mapping)) {
+            throw new \Exception('Do no support' . $name);
         }
 
         return [
             '$addFields' => [
                 $key => [
-                    '$concat' => ["%%COLLECTION_{$name}%%", $expression],
+                    '$concat' => [$name, $expression],
                 ],
             ]
         ];
