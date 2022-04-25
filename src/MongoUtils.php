@@ -152,7 +152,7 @@ class MongoUtils
             'ASSETS' => '02' ,
             'WORKORDERS' => '03',
             'PARTS' => '04',
-            'PURCHASE_ORDERS' => '05' ,
+            'PURCHASEORDERS' => '05' ,
             'PREVENTIVEMAINTENANCE' => '06',
             'MODELS' => '07',
             'COUNTERS' => '08',
