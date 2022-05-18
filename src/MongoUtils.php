@@ -122,11 +122,71 @@ class MongoUtils
         return ['$unionWith' => compact($coll, $pipeline)];
     }
 
+    public static function matchWithNeField(string $field, mixed $value): array
+    {
+        return [
+            '$match' => [
+                $field => [
+                    '$ne' => $value,
+                ],
+            ],
+        ];
+    }
+
+    public static function matchWithEqField(string $field, mixed $value): array
+    {
+        return [
+            '$match' => [
+                $field => [
+                    '$eq' => $value,
+                ],
+            ],
+        ];
+    }
+
+    public static function matchExistsField(string $field, mixed $value): array
+    {
+        return [
+            '$match' => [
+                $field => [
+                    '$exists' => $value,
+                ],
+            ],
+        ];
+    }
+
+    public static function group(string $filedKey, string $fieldName, array $extraFields = []): array
+    {
+        $group = [
+            '_id' => [
+                $filedKey => '$' . $fieldName
+            ],
+            'objectKey' => [
+                '$first' => '$_id'
+            ]
+        ];
+
+        foreach ($extraFields as $field) {
+            $group[$field] = self::first('$' . $field);
+        }
+
+        return [
+            '$group' => $group
+        ];
+    }
+
+    public static function first(string $expr): array
+    {
+        return [
+            '$first' => $expr
+        ];
+    }
+
     /**
      * eg : parse to int
      * m::toValue('$toInt', m::decimal('$field'))
      */
-    public static function toValue(string $type, mixed $value) : array
+    public static function toValue(string $type, mixed $value): array
     {
         return [$type => $value];
     }
@@ -149,18 +209,18 @@ class MongoUtils
 
         $mapping = [
             'SITES' => "%%COLLECTION_SITES%%",
-            'ASSETS' => "%%COLLECTION_ASSETS%%" ,
+            'ASSETS' => "%%COLLECTION_ASSETS%%",
             'WORKORDERS' => "%%COLLECTION_WORK_ORDERS%%",
             'PARTS' => "%%COLLECTION_PARTS%%",
-            'PURCHASEORDERS' => '%%COLLECTION_PURCHASE_ORDERS%%' ,
+            'PURCHASEORDERS' => '%%COLLECTION_PURCHASE_ORDERS%%',
             'PREVENTIVEMAINTENANCE' => '%%COLLECTION_PM%%',
             'MODELS' => '%%COLLECTION_MODELS%%',
             'COUNTERS' => '%%COLLECTION_COUNTERS%%',
             'VENDORS' => '%%COLLECTION_VENDORS%%',
             'ASSETSDOWNTIME' => '10',
             'WORKREQUESTS' => '11',
-            'COUNTERSREADINGS' => '12' ,
-            'DOCUMENTS' =>  '13',
+            'COUNTERSREADINGS' => '12',
+            'DOCUMENTS' => '13',
             'TEAMS' => '14',
         ];
 
