@@ -252,4 +252,9 @@ class MongoUtils
         ];
     }
     
+    public static function indexOfArray($array, $search): array
+    {
+        return [ '$indexOfArray' => [$array, $search] ];
+    }
+    
 }
