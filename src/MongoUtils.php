@@ -238,4 +238,18 @@ class MongoUtils
             ]
         ];
     }
+    
+    public static function pluck(mixed $array, mixed $field): array
+    {
+        return [
+            '$map' => [
+                'input' => $array,
+                'as' => 'i',
+                'in' => [
+                    '$getField' => ['input' => '$$i', 'field' => $field],
+                ],
+            ],
+        ];
+    }
+    
 }
