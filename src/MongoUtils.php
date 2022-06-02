@@ -112,9 +112,12 @@ class MongoUtils
         ];
     }
 
-    public static function unwind($path, $preserveNullAndEmptyArrays = false): array
+    public static function unwind(string $path, bool $preserveNullAndEmptyArrays = false): array
     {
-        return ['$unwind' => compact($path, $preserveNullAndEmptyArrays)];
+        return ['$unwind' => [
+            'path' => $path,
+            'preserveNullAndEmptyArrays' => $preserveNullAndEmptyArrays
+        ]];
     }
 
     public static function unionWith(string $coll, array $pipeline): array
@@ -238,7 +241,7 @@ class MongoUtils
             ]
         ];
     }
-    
+
     public static function pluck(mixed $array, mixed $field): array
     {
         return [
@@ -251,10 +254,54 @@ class MongoUtils
             ],
         ];
     }
-    
+
     public static function indexOfArray($array, $search): array
     {
-        return [ '$indexOfArray' => [$array, $search] ];
+        return ['$indexOfArray' => [$array, $search]];
     }
-    
+
+    public static function lookupWithPipeline(
+        string $from,
+        array $let,
+        mixed $pipeline,
+        string $as,
+        string $localFied = null,
+        string $foreignField = null
+    ): array {
+        $lookup = [
+            'from' => $from,
+            'pipeline' => [$pipeline],
+            'as' => $as
+        ];
+
+        if ($localFied) {
+            $lookup['localField'] = $localFied;
+        }
+
+        if ($foreignField) {
+            $lookup['foreignField'] = $foreignField;
+        }
+
+        if ($let !== []) {
+            $lookup['let'] = $let;
+        }
+
+        return [
+            '$lookup' => $lookup
+        ];
+    }
+
+    public static function eq(string $filed, string $value): array
+    {
+        return ['$eq' => ['$status', 'active']];
+    }
+
+    public static function match(string $filed, string $value): array
+    {
+        return [
+            '$match' => [
+                $filed => $value,
+            ],
+        ];
+    }
 }
