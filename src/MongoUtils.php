@@ -270,7 +270,7 @@ class MongoUtils
     ): array {
         $lookup = [
             'from' => $from,
-            'pipeline' => [$pipeline],
+            'pipeline' => $pipeline,
             'as' => $as
         ];
 
