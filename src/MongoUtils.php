@@ -255,6 +255,17 @@ class MongoUtils
         ];
     }
 
+    public static function pluckWithFields(string $input, string $as, array $in): array 
+    {
+        return [
+            '$map' => [
+                'input' => $input, 
+                'as' => $as,
+                'in' => $in
+            ]
+        ];
+    }
+
     public static function indexOfArray($array, $search): array
     {
         return ['$indexOfArray' => [$array, $search]];
