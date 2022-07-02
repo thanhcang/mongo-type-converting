@@ -103,6 +103,11 @@ class MongoUtils
         return ['$ifNull' => [$expr, $then]];
     }
 
+    public static function if($expr, $then, $else): array
+    {
+        return ['$cond' => ['if'=> $expr, 'then'=> $then, 'else'=> $else] ];
+    }
+
     public static function createView(string $viewName, string $viewOn, array $pipeline): array
     {
         return [
