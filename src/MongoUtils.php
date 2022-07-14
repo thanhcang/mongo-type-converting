@@ -46,6 +46,18 @@ class MongoUtils
         return static::arrayElemAt($expr, 0);
     }
 
+    public static function arrayLast($expr): array
+    {
+        return ['$last' => $expr];
+    }
+
+    public static function ceilWithFunc(array $expr): array
+    {
+        return [
+            '$ceil' => $expr
+        ];
+    }
+
     public static function toString(string $expression): array
     {
         return self::typeOf(MString::class, $expression);
