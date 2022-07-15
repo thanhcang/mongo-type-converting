@@ -139,7 +139,7 @@ class MongoUtils
 
     public static function unionWith(string $coll, array $pipeline): array
     {
-        return ['$unionWith' => compact($coll, $pipeline)];
+        return ['$unionWith' => ['coll' => $coll, 'pipeline' => $pipeline]];
     }
 
     public static function matchWithNeField(string $field, mixed $value): array
