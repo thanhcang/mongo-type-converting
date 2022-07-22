@@ -220,19 +220,11 @@ class MongoUtils
     }
 
     public static function toKey(
-        string $fnc = null,
+        string $fnc,
         string $key = '$key',
         string $expression = '$_id'
     ): array {
-        // @TODO : refactor code
-        if ($fnc === null) {
-            return [
-                '$addFields' => [
-                    $key => 1,
-                ]
-            ];
-        }
-
+        
         preg_match('/get(.+)Output/', $fnc, $matches);
         $name = Str::upper($matches[1]);
 
