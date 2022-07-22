@@ -221,7 +221,7 @@ class MongoUtils
 
     public static function toKey(
         string $fnc = null,
-        string $key = 'key',
+        string $key = '$key',
         string $expression = '$_id'
     ): array {
         // @TODO : refactor code
