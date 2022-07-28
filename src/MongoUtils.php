@@ -13,6 +13,7 @@ use MakiniAdapter\MongoConverter\Converts\MString;
 class MongoUtils
 {
     use Calculation;
+    use Comparision;
 
     public static function lookup(string $from, string $localField, string $foreignField, string $as): array
     {
@@ -117,7 +118,7 @@ class MongoUtils
 
     public static function if($expr, $then, $else): array
     {
-        return ['$cond' => ['if'=> $expr, 'then'=> $then, 'else'=> $else] ];
+        return ['$cond' => ['if' => $expr, 'then' => $then, 'else' => $else]];
     }
 
     public static function createView(string $viewName, string $viewOn, array $pipeline): array
@@ -131,48 +132,17 @@ class MongoUtils
 
     public static function unwind(string $path, bool $preserveNullAndEmptyArrays = false): array
     {
-        return ['$unwind' => [
-            'path' => $path,
-            'preserveNullAndEmptyArrays' => $preserveNullAndEmptyArrays
-        ]];
+        return [
+            '$unwind' => [
+                'path' => $path,
+                'preserveNullAndEmptyArrays' => $preserveNullAndEmptyArrays
+            ]
+        ];
     }
 
     public static function unionWith(string $coll, array $pipeline): array
     {
         return ['$unionWith' => ['coll' => $coll, 'pipeline' => $pipeline]];
-    }
-
-    public static function matchWithNeField(string $field, mixed $value): array
-    {
-        return [
-            '$match' => [
-                $field => [
-                    '$ne' => $value,
-                ],
-            ],
-        ];
-    }
-
-    public static function matchWithEqField(string $field, mixed $value): array
-    {
-        return [
-            '$match' => [
-                $field => [
-                    '$eq' => $value,
-                ],
-            ],
-        ];
-    }
-
-    public static function matchExistsField(string $field, mixed $value): array
-    {
-        return [
-            '$match' => [
-                $field => [
-                    '$exists' => $value,
-                ],
-            ],
-        ];
     }
 
     public static function group(string $filedKey, string $fieldName, array $extraFields = []): array
@@ -224,7 +194,7 @@ class MongoUtils
         string $key = '$key',
         string $expression = '$_id'
     ): array {
-        
+
         preg_match('/get(.+)Output/', $fnc, $matches);
         $name = Str::upper($matches[1]);
 
@@ -273,11 +243,11 @@ class MongoUtils
         ];
     }
 
-    public static function pluckWithFields(string $input, string $as, array $in): array 
+    public static function pluckWithFields(string $input, string $as, array $in): array
     {
         return [
             '$map' => [
-                'input' => $input, 
+                'input' => $input,
                 'as' => $as,
                 'in' => $in
             ]
@@ -317,20 +287,6 @@ class MongoUtils
 
         return [
             '$lookup' => $lookup
-        ];
-    }
-
-    public static function eq(string $filed, string $value): array
-    {
-        return ['$eq' => ['$status', 'active']];
-    }
-
-    public static function match(string $filed, string $value): array
-    {
-        return [
-            '$match' => [
-                $filed => $value,
-            ],
         ];
     }
 }
