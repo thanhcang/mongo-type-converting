@@ -10,7 +10,7 @@ trait Comparision
         return ['$isArray' => $field];
     }
 
-    public static function cond( array $ifConf, mixed $thenConf, mixed $elseConf = null): mixed
+    public static function cond(array $ifConf, mixed $thenConf, mixed $elseConf = null): mixed
     {
         return [
             '$cond' => [
@@ -71,6 +71,15 @@ trait Comparision
                     '$exists' => $value,
                 ],
             ],
+        ];
+    }
+
+    public static function matchEprx(mixed $pipeline): array
+    {
+        return [
+            '$match' => [
+                '$expr' => $pipeline
+            ]
         ];
     }
 }

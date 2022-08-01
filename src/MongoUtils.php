@@ -12,20 +12,10 @@ use MakiniAdapter\MongoConverter\Converts\MString;
 
 class MongoUtils
 {
-    use Calculation;
-    use Comparision;
-
-    public static function lookup(string $from, string $localField, string $foreignField, string $as): array
-    {
-        return [
-            '$lookup' => [
-                'from' => $from,
-                'localField' => $localField,
-                'foreignField' => $foreignField,
-                'as' => $as
-            ]
-        ];
-    }
+    use Calculation,
+        Comparision,
+        Arrayable,
+        Relation;
 
     public static function addFields($fields): array
     {
@@ -35,21 +25,6 @@ class MongoUtils
     public static function project($fields): array
     {
         return ['$project' => $fields];
-    }
-
-    public static function arrayElemAt($expr, $index): array
-    {
-        return ['$arrayElemAt' => [$expr, $index]];
-    }
-
-    public static function arrayFirst($expr): array
-    {
-        return static::arrayElemAt($expr, 0);
-    }
-
-    public static function arrayLast($expr): array
-    {
-        return ['$last' => $expr];
     }
 
     public static function ceilWithFunc(array $expr): array
@@ -130,21 +105,6 @@ class MongoUtils
         ];
     }
 
-    public static function unwind(string $path, bool $preserveNullAndEmptyArrays = false): array
-    {
-        return [
-            '$unwind' => [
-                'path' => $path,
-                'preserveNullAndEmptyArrays' => $preserveNullAndEmptyArrays
-            ]
-        ];
-    }
-
-    public static function unionWith(string $coll, array $pipeline): array
-    {
-        return ['$unionWith' => ['coll' => $coll, 'pipeline' => $pipeline]];
-    }
-
     public static function group(string $filedKey, string $fieldName, array $extraFields = []): array
     {
         $group = [
@@ -172,6 +132,16 @@ class MongoUtils
         ];
     }
 
+    public static function getField(string $filed, array $input): array
+    {
+        return [
+            '$getField' => [
+                'field' => $filed,
+                'input' => $input
+            ]
+        ];
+    }
+
     /**
      * eg : parse to int
      * m::toValue('$toInt', m::decimal('$field'))
@@ -189,6 +159,7 @@ class MongoUtils
         return $convertor->toArray();
     }
 
+    // @deprecated : will remove after update on apdatepr to use key.
     public static function toKey(
         string $fnc,
         string $key = '$key',
@@ -227,66 +198,6 @@ class MongoUtils
                     '$concat' => [$coll, $expression],
                 ],
             ]
-        ];
-    }
-
-    public static function pluck(mixed $array, mixed $field): array
-    {
-        return [
-            '$map' => [
-                'input' => $array,
-                'as' => 'i',
-                'in' => [
-                    '$getField' => ['input' => '$$i', 'field' => $field],
-                ],
-            ],
-        ];
-    }
-
-    public static function pluckWithFields(string $input, string $as, array $in): array
-    {
-        return [
-            '$map' => [
-                'input' => $input,
-                'as' => $as,
-                'in' => $in
-            ]
-        ];
-    }
-
-    public static function indexOfArray($array, $search): array
-    {
-        return ['$indexOfArray' => [$array, $search]];
-    }
-
-    public static function lookupWithPipeline(
-        string $from,
-        array $let,
-        mixed $pipeline,
-        string $as,
-        string $localFied = null,
-        string $foreignField = null
-    ): array {
-        $lookup = [
-            'from' => $from,
-            'pipeline' => $pipeline,
-            'as' => $as
-        ];
-
-        if ($localFied) {
-            $lookup['localField'] = $localFied;
-        }
-
-        if ($foreignField) {
-            $lookup['foreignField'] = $foreignField;
-        }
-
-        if ($let !== []) {
-            $lookup['let'] = $let;
-        }
-
-        return [
-            '$lookup' => $lookup
         ];
     }
 }
