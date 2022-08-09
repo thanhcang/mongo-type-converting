@@ -96,6 +96,18 @@ class MongoUtils
         return ['$cond' => ['if' => $expr, 'then' => $then, 'else' => $else]];
     }
 
+    public static function switch(...$args): array
+    {
+        if (count($args) === 0) {
+            trigger_error('Invalid argument count');
+        }
+        if (is_array($args[0])) {
+            $args = $args[0];
+        }
+
+        return ['$switch' => ['branches' => $args]];
+    }
+
     public static function createView(string $viewName, string $viewOn, array $pipeline): array
     {
         return [
