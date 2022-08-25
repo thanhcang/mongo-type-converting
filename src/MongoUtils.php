@@ -15,7 +15,8 @@ class MongoUtils
     use Calculation,
         Comparision,
         Arrayable,
-        Relation;
+        Relation,
+        Stringable;
 
     public static function addFields($fields): array
     {
