@@ -3,6 +3,8 @@
 
 namespace MakiniAdapter\MongoConverter;
 
+use Illuminate\Support\Arr;
+
 trait Arrayable
 {
     public static function arrayElemAt($expr, $index): array
@@ -62,5 +64,18 @@ trait Arrayable
     public static function unionWith(string $coll, array $pipeline): array
     {
         return ['$unionWith' => ['coll' => $coll, 'pipeline' => $pipeline]];
+    }
+
+    public static function toCustomFields(array $fields) : array
+    {
+        $addFields = [];
+
+        foreach ($fields as $field) {
+            $addFields = array_merge($addFields, [
+                $field => '$' . $field
+            ]);
+        }
+
+        return $addFields;
     }
 }

@@ -61,5 +61,6 @@ class Schema extends Fluent
     const USER_ASSIGNED_KEY = 'userAssignedKey';
     const USER_COMPLETE_KEY = 'userCompletedKey';
 
+    const CUSTOM_FIELDS = 'customFields';
 
 }
