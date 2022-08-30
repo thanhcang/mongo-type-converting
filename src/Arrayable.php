@@ -66,14 +66,16 @@ trait Arrayable
         return ['$unionWith' => ['coll' => $coll, 'pipeline' => $pipeline]];
     }
 
-    public static function toCustomFields(array $fields) : array
+    public static function toCustomFields(array $fields): array
     {
         $addFields = [];
 
         foreach ($fields as $field) {
-            $addFields = array_merge($addFields, [
-                $field => '$' . $field
-            ]);
+            $addFields = array_merge($addFields,
+                [
+                    $field => ['$ifNull' => ['$' . "$field", []]]
+                ]
+            );
         }
 
         return $addFields;
