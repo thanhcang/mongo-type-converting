@@ -76,6 +76,11 @@ class MongoUtils
         return ['$concat' => $args];
     }
 
+    public static function concatArrays($array): array
+    {
+        return ['$concatArrays' => $array];
+    }
+
     public static function unset(...$args): array
     {
         if (count($args) === 0) {
