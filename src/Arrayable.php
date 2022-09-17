@@ -80,4 +80,9 @@ trait Arrayable
 
         return $addFields;
     }
+
+    public static function inArray(string $key, string $keys)
+    {
+        return ['$in' => [$key, $keys]];
+    }
 }
