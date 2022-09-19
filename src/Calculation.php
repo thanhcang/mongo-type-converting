@@ -15,5 +15,8 @@ trait Calculation
         return ['$multiply' => $expression];
     }
 
-
+    #[ArrayShape(['$sum' => "array"])]
+    public static function sum($expression): array {
+        return ['$sum' => $expression];
+    }
 }
