@@ -14,6 +14,7 @@ class Schema extends Fluent
     const VENDOR_KEY = 'vendorKey';
     const PART_KEY = 'partKey';
     const LOCATION_KEY = 'locationKey';
+    const VENDOR_KEYS = 'vendorKeys';
     const ACCOUNT_KEY = 'accountKey';
 
     const MODEL_KEY = 'modelKey';
