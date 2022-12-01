@@ -66,5 +66,6 @@ class Schema extends Fluent
 
     const CUSTOM_FIELDS = 'customFields';
     const DOUCMENTS = 'documents';
+    const LOCATION_KEYS = 'locationKeys';
     
 }
