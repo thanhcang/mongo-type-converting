@@ -17,11 +17,14 @@ class Schema extends Fluent
     const VENDOR_KEYS = 'vendorKeys';
     const ACCOUNT_KEY = 'accountKey';
 
-    const MODEL_KEY = 'modelKey';
+    const MODEL_KEY = 'assetTemplateKey';
+    const ASSET_TEMPLATE_KEYS = 'assetTemplateKeys';
     const TEAM_KEY = 'teamKey';
     const DOCUMENT_KEYS = 'documentKeys';
     const PARENT_KEY = 'parentKey';
     const PARENT_KEYS = 'parentKeys';
+
+    const STATUS_KEY = 'statusKey';
 
     const NAME = 'name';
     const TITLE = 'title';
@@ -29,7 +32,7 @@ class Schema extends Fluent
     const NOTES = 'notes';
     const ACTIVE = 'isActive';
     const CATEGORY = 'categoryName';
-    const MANUFACTURE_NAME = 'manufacturerName';
+    const MANUFACTURE_NAME = 'makeName';
     const MODEL_NAME = 'modelName';
     const SERIAL_KEY = 'serialNumber';
     const CRITICALITY = 'criticality';
@@ -61,11 +64,24 @@ class Schema extends Fluent
     const LAST_COMPLETE_REMARKS = 'lastCompletionRemarks';
     const COMPLETE_REMARKS = 'completionRemarks';
 
-    const USER_ASSIGNED_KEY = 'userAssignedKey';
+    const USER_ASSIGNED_KEY = 'laborAssignedKey';
     const USER_COMPLETE_KEY = 'userCompletedKey';
 
     const CUSTOM_FIELDS = 'customFields';
-    const DOUCMENTS = 'documents';
+    const DOCUMENTS = 'documents';
     const LOCATION_KEYS = 'locationKeys';
-    
+    const ORGANIZATION_KEY = 'organizationKey';
+    const BILLING_ADDRESS = 'billingAddress';
+    const CONTACT = 'contact';
+    const STOREROOM_KEY = 'storeroomKey';
+    const MAKE_COMPANY_KEY = 'makeCompanyKey';
+    const CUSTOMER_KEY = 'customerKey';
+    const ACCOUNT_KEYS = 'accountKeys';
+    const PHYSICAL = 'isPhysical';
+    const USER_MANAGER_KEY = 'userManagerKey';
+    const DEFAULT = 'isDefault';
+    const ASSET_DOWNTIME_KEY = 'assetDowntimeKey';
+    const SERVICE_REQUEST_KEY = 'serviceRequestKey';
+    const TASKS = 'tasks';
+    const USER_APPROVED_KEY = 'userApprovedKey';
 }

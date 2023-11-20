@@ -22,5 +22,7 @@ class PM extends Schema
     const ESTIMATE_TIME = 'estimatedTime';
     const DOCUMENT_KEY = 'documentKey';
     const DOCUMENT_PAGE = 'documentPage';
+    const CATEGORY_CODE = 'categoryCode';
+    const REQUIRES_MATERIALS = 'requiresMaterials';
 
 }
